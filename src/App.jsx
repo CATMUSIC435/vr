@@ -1,34 +1,41 @@
-import { Canvas, useLoader } from '@react-three/fiber'
-import { AdaptiveDpr, AdaptiveEvents, CameraControls, ContactShadows, Environment, Html, OrbitControls } from '@react-three/drei'
 import { useRef, useState } from 'react'
-// import PanoramaWithTransition from './panorama-with-transition';
-import * as THREE from 'three';
+import { Building, Component, Map } from 'lucide-react';
+import { motion, AnimatePresence } from "framer-motion";
+import MapBoxBasic from './map';
+import PanoramaViewer from './panorama-viewer';
+import { Plans } from './plans';
+import AudioPlayerWithPlaylist from './audio-player-with-playlist';
+import { Library } from './library';
 
 export default function App() {
 
-  const currentMeshRef = useRef();
-  const texture1 = useLoader(THREE.TextureLoader, '/assets/panorama.png')
-  const texture2 = useLoader(THREE.TextureLoader, '/assets/pano.jpg')
+  // const currentMeshRef = useRef();
+  // const texture1 = useLoader(THREE.TextureLoader, '/assets/panorama.png')
+  // const texture2 = useLoader(THREE.TextureLoader, '/assets/pano.jpg')
 
-  texture1.mapping = THREE.EquirectangularReflectionMapping;
-  texture1.generateMipmaps = false;
-  texture2.mapping = THREE.EquirectangularReflectionMapping;
-  texture2.generateMipmaps = false;
+  // texture1.mapping = THREE.EquirectangularReflectionMapping;
+  // texture1.generateMipmaps = false;
+
+  // texture2.mapping = THREE.EquirectangularReflectionMapping;
+  // texture2.generateMipmaps = false;
 
   const controls = useRef()
   const [transition, setTransition] = useState(0);
+  const [index, setIndex] = useState(0);
+  const [isOpen, setIsOpen] = useState(false)
 
 
-  const material = useLoader(THREE.TextureLoader, '/assets/panorama.png')
-  material.mapping = THREE.EquirectangularReflectionMapping;
+  // const material = useLoader(THREE.TextureLoader, '/assets/panorama.png')
+  // material.mapping = THREE.EquirectangularReflectionMapping;
   // currentTexture.encoding   = THREE.sRGBEncoding;
-  material.generateMipmaps = false;
+  // material.generateMipmaps = false;
   // currentTexture.minFilter = THREE.LinearMipMapLinearFilter;
 
-  const material2 = useLoader(THREE.TextureLoader, '/assets/pano.jpg')
-  material2.mapping = THREE.EquirectangularReflectionMapping;
+  // const material2 = useLoader(THREE.TextureLoader, '/assets/pano.ktx2')
+  // const material2 = useKTX2('/assets/pano.ktx2');
+  // material2.mapping = THREE.EquirectangularReflectionMapping;
   // currentTexture.encoding   = THREE.sRGBEncoding;
-  material2.generateMipmaps = false;
+  // material2.generateMipmaps = false;
   // currentTexture.minFilter = THREE.LinearMipMapLinearFilter;
 
   const handleTransition = (e) => {
@@ -36,74 +43,96 @@ export default function App() {
     setTransition(value);
   }
 
-  console.log(transition);
-  
 
   return (
     <>
-      <div className='relative h-screen w-screen overflow-hidden'>
-        <div className='h-screen w-screen overflow-hidden'>
-          <Canvas camera={{ position: [0, 0, 0.1] }}>
-            <AdaptiveDpr pixelated />
-            <AdaptiveEvents />
-            <ambientLight intensity={Math.PI / 2} />
-            <directionalLight
-              position={[10, 10, 5]}
-              intensity={1.5}
-              castShadow
-              shadow-mapSize-width={1024}
-              shadow-mapSize-height={1024}
-            />
+      <div className='w-screen h-screen relative bg-[#1A341B]'>
+        <PanoramaViewer transition={transition} onChange={handleTransition} />
 
-            <mesh>
-              <sphereGeometry args={[500, 60, 40]} />
-              <meshBasicMaterial opacity={1 - transition} transparent={true} map={material2} side={THREE.BackSide} />
-            </mesh>
+        <div className="absolute top-1/2 left-4 -translate-y-1/2">
+          <div className="flex flex-col gap-3 text-xs md:text-sm font-light">
+            <button
+              onClick={() => setIndex(0)}
+              className={`cursor-pointer flex flex-col items-center gap-1 px-2 py-2 rounded-lg transition text-[#d4ae6f] backdrop-blur-md shadow-2xs
+        ${index === 0 ? "bg-[#1A341B]" : "bg-white/10 hover:bg-blue-100/20 focus:border-none"}`}
+            >
+              <Component className="w-6 h-6" />
+              Toàn cảnh
+            </button>
 
-            <mesh ref={currentMeshRef}>
-              <sphereGeometry args={[500, 60, 40]} />
-              <meshBasicMaterial opacity={transition} transparent={true} map={material} side={THREE.BackSide} />
-            </mesh>
-
-            {/* <mesh position={[0, 0, -500]}>
-              <Html distanceFactor={10}>
-                <div className='w-[10000px]'>
-                  <img
-                    className="w-full object-cover rounded-full"
-                    src="https://atsaigonriverside.vn/wp-content/themes/dxmd/assets/images/dent.jpg"
-                    alt="Beautiful House"
-                  />
-                </div>
-              </Html>
-            </mesh> */}
-
-            <ambientLight intensity={0.5 * Math.PI} />
-            <ContactShadows position={[0, -9, 0]} opacity={0.7} scale={40} blur={1} />
-            <CameraControls ref={controls} enableZoom={true} minDistance={100} maxDistance={500} zoomSpeed={1.2} />
-            <OrbitControls />
-            <Environment preset="city" />
-          </Canvas>
-        </div>
-
-        <div className='absolute bottom-8 left-1/2 transform -translate-x-1/2 w-80 bg-white/90 backdrop-blur-sm p-4 rounded-lg shadow-lg'>
-          <label className='block text-sm font-medium text-gray-700 mb-2'>
-            Chuyển cảnh
-          </label>
-          <input
-            type="range"
-            min="0"
-            max="1"
-            step="0.001"
-            value={transition}
-            onChange={handleTransition}
-            className='w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider'
-          />
-          <div className='flex justify-between text-xs text-gray-600 mt-1'>
-            <span>Cảnh 1</span>
-            <span>{Math.round(transition * 100)}%</span>
-            <span>Cảnh 2</span>
+            <button
+              onClick={() => {
+                setIsOpen(true)
+                setIndex(1)
+              }}
+              className={` cursor-pointer flex flex-col items-center gap-1 px-2 py-2 rounded-lg transition text-[#d4ae6f] backdrop-blur-2xl shadow-2xs
+        ${index === 1 ? "bg-[#1A341B]" : "bg-white/10 hover:bg-blue-100/20 focus:border-none"}`}
+            >
+              <Map className="w-6 h-6" />
+              Bản đồ
+            </button>
+            <button
+              onClick={() => {
+                setIsOpen(true)
+                setIndex(2)
+              }}
+              className={` cursor-pointer flex flex-col items-center gap-1 px-2 py-2 rounded-lg transition text-[#d4ae6f] backdrop-blur-2xl shadow-2xs
+        ${index === 2 ? "bg-[#1A341B]" : "bg-white/10 hover:bg-blue-100/20 focus:border-none"}`}
+            >
+              <Building className="w-6 h-6" />
+              Mặt bằng
+            </button>
+            <button
+              onClick={() => {
+                setIsOpen(true)
+                setIndex(3)
+              }}
+              className={` cursor-pointer flex flex-col items-center gap-1 px-2 py-2 rounded-lg transition text-[#d4ae6f] backdrop-blur-2xl shadow-2xs
+        ${index === 3 ? "bg-[#1A341B]" : "bg-white/10 hover:bg-blue-100/20 focus:border-none"}`}
+            >
+              <Building className="w-6 h-6" />
+              Thư viện
+            </button>
           </div>
         </div>
+
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              className="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              <motion.div
+                className="relative shadow-lg w-[80vw] h-[80vh] bg-white/10 backdrop-blur-md rounded-2xl"
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+
+                <button
+                  onClick={() => setIsOpen(null)}
+                  className="cursor-pointer absolute top-2 right-2 z-10 text-black transform hover:rotate-180 transition-all duration-300 duration-initial"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg"
+                    width="36" height="36" viewBox="0 0 24 24"
+                    fill="none" stroke="#fff"
+                    strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                  </svg>
+
+                </button>
+                {index === 1 && <div className='w-full h-full rounded-xl overflow-hidden'><MapBoxBasic /></div>}
+                {index === 2 && <Plans />}
+                {index === 3 && <div className='w-full h-full rounded-xl overflow-hidden'><Library /></div>}
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+        <AudioPlayerWithPlaylist />
       </div>
     </>
   )

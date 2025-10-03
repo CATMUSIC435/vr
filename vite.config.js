@@ -12,4 +12,11 @@ export default defineConfig({
       },
     }),
   ],
+  server: {
+    allowedHosts: [
+      'localhost',
+      '127.0.0.1',
+      '3aa5179c56b9.ngrok-free.app' // 👈 thêm host này
+    ]
+  }
 })
