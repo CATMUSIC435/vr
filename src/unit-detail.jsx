@@ -2,8 +2,8 @@ import { UnitTable } from "./unit-table";
 
 export function UnitDetail({ area, changeArea }) {
     return (
-        <div className="md:bg-[#f4ecdc] p-6 flex justify-center h-[90%] md:overflow-x-scroll text-white md:text-black">
-            <div className="max-w-lg w-full space-y-4 md:space-y-6">
+        <div className="p-6 flex justify-center h-full text-white md:text-black">
+            <div className="max-w-lg w-full space-y-4 md:space-y-6 h-[800px]">
                 <div className="border-t border-[#3a2c1c]/40" />
 
                 <div className="bg-[#3a2c1c] text-white text-center py-2 uppercase tracking-widest font-semibold">
@@ -46,14 +46,14 @@ export function UnitDetail({ area, changeArea }) {
 
 
 
-                <div className="w-full" >
+                {/* <div className="w-full" >
                     <img
                         src={area.imgPlan}
                         useMap="#image-map"
                         alt="floor plan"
                         className="w-full h-auto"
                     />
-                </div>
+                </div> */}
 
                 <div className="overflow-x-auto">
                     <table className="w-full border border-[#3a2c1c]/50 text-sm">

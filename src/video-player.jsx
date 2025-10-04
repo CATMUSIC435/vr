@@ -34,12 +34,11 @@ export default function VideoPlayer({
                 className="w-full h-full object-cover"
             />
 
-            {/* Overlay nút Play/Pause */}
             {!controls && (
                 <button
                     onClick={togglePlay}
-                    className="absolute bottom-0 left-0 
-                   w-16 h-16 flex items-center justify-center    bg-black/50 text-white 
+                    className="absolute bottom-0 left-0 rounded-2xl
+                   w-16 h-16 flex items-center justify-center bg-black/50 text-white 
                    hover:bg-black/70 transition"
                 >
                     {isPlaying ? <Pause size={32} /> : <Play size={32} />}

@@ -8,8 +8,11 @@ import { MeshPano } from './mesh-pano';
 import { Scene } from './scene';
 import { Moon, Plus, Sun } from 'lucide-react';
 import MapBoxBasic from './map';
+import { Hotspot } from './hotspot';
+import HotspotCircle from './hotspot-circle';
+import { HotspotImage } from './hotspot-image';
 
-export default function PanoramaViewer() {
+export default function PanoramaViewer({ isOpen }) {
 
     // const currentMeshRef = useRef();
     // const texture1 = useLoader(THREE.TextureLoader, '/assets/panorama.png')
@@ -51,7 +54,7 @@ export default function PanoramaViewer() {
         <>
             <div className='relative h-screen w-screen overflow-hidden'>
                 <div className='h-screen w-screen overflow-hidden'>
-                    <Canvas camera={{ position: [0, 0, 0.1], fov: 75 }}>
+                    <Canvas camera={{ position: [0, 0, 0.1], fov: 30 }}>
                         <AdaptiveDpr pixelated />
                         <AdaptiveEvents />
                         <ambientLight intensity={Math.PI / 2} />
@@ -65,6 +68,39 @@ export default function PanoramaViewer() {
 
                         <MeshPano opacity={transition} path="/assets/panorama.ktx2" />
                         <MeshPano opacity={1} path="/assets/panorama-ui.ktx2" />
+
+
+                        <HotspotImage
+                            position={[20, -495, -22]}
+                            label="Cửa chính"
+                            image="/12.jpg"
+                        />
+
+                        {/* <Hotspot
+                            position={[0, 0, -500]}
+                            label="Cửa chính"
+                            image="/12.jpg"
+                        />
+                        <Hotspot
+                            position={[-200, 0, -500]}
+                            label="Triển lãm"
+                            image="/12.jpg"
+                        />
+
+                         <Hotspot
+                            position={[-400, 0, -500]}
+                            label="Tòa nhà"
+                            image="/12.jpg"
+                        />
+
+                         <Hotspot
+                            position={[500, 0, -500]}
+                            label="Công viên"
+                            image="/12.jpg"
+                        /> */}
+
+                        {!isOpen ? <HotspotCircle /> : null}
+
 
                         <Scene />
 

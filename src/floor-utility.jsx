@@ -9,7 +9,7 @@ export function FloorUtility({ plan, level = 0 }) {
 
 
     const componentMemo = React.useMemo(() => {
-        
+
         return <>
             {areaUtilitys[level] && areaUtilitys[level].map((area) => (
                 <div key={area.id} className="absolute w-5 h-5 rounded-full border-[1px] border-white text-white bg-[#1A341B] flex justify-center items-center p-1 text-xs"
@@ -30,9 +30,9 @@ export function FloorUtility({ plan, level = 0 }) {
 
             <div className="grid grid-cols-1 md:grid-cols-6 h-full w-full">
                 <div>
-                    <div className="flex flex-col">
+                    <div className="flex flex-col gap-1 px-4 py-2">
                         {areaUtilitys[level].map((area, index) => !area.color ? (
-                            <div key={index} className="flex gap-1 items-center"
+                            <div key={index} className="flex gap-1 items-center text-sm border-b-1"
                                 onMouseEnter={() => setLocation(area.stt)}
                                 onMouseLeave={() => setLocation(0)}>
                                 <div key={area.id} style={area.color ? { background: area.color } : {}} className="w-5 h-5 rounded-full border-[1px] border-white text-white font-medium bg-[#1A341B] flex justify-center items-center text-xs">
@@ -43,19 +43,18 @@ export function FloorUtility({ plan, level = 0 }) {
                         ) : null)}
                     </div>
                 </div>
-                <div className='col-span-5 w-full h-full'>
+                <div className='col-span-5 w-full h-full relative'>
+                    <div className="absolute top-0 left-0 w-full h-full flex justify-end">
+                        <div className="md:w-[fit-content] relative h-full">
+                            <img
+                                src={plan}
+                                useMap="#image-map"
+                                alt="floor plan"
+                                class="w-full h-auto md:w-auto md:h-full object-contain block rounded-xl"
+                            />
+                            {componentMemo}
 
-                    <div className="mx-auto md:w-[fit-content] relative md:h-[600px]">
-                        <img
-                            src={plan}
-                            useMap="#image-map"
-                            alt="floor plan"
-                            className="w-full md:w-auto md:h-full object-cover block rounded-xl"
-                        />
-
-
-                        {componentMemo}
-
+                        </div>  
                     </div>
                 </div>
             </div>

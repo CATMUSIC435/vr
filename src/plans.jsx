@@ -129,7 +129,7 @@ export function ImageMapHighlight() {
               transition={{ duration: 0.4, ease: "easeInOut" }}
             >
               <motion.div
-                className="bg-white/10 backdrop-blur-2xl rounded-2xl shadow-2xl relative max-w-full max-h-full md:max-h-full w-full h-full p-6"
+                className="bg-white/10 backdrop-blur-2xl rounded-2xl shadow-2xl relative max-w-full max-h-full md:max-h-full w-full h-full"
                 initial={{ opacity: 0, scale: 0.8, y: 50 }}
                 animate={{
                   opacity: 1,

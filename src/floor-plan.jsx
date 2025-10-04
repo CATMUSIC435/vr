@@ -84,7 +84,7 @@ export function FloorPlan({ plan, isBLevel }) {
             <AnimatePresence>
                 {modalArea && (
                     <motion.div
-                        className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 "
+                        className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 rounded-2xl  md:overflow-hidden"
                         onClick={() => {
                             setModalArea(false);
                         }}
@@ -94,7 +94,7 @@ export function FloorPlan({ plan, isBLevel }) {
                         transition={{ duration: 0.3, ease: "easeInOut" }}
                     >
                         <motion.div
-                            className="relative bg-white/40 w-full h-full shadow-2xl overflow-y-auto md:overflow-hidden"
+                            className="relative bg-white/40 w-full h-full shadow-2xl overflow-y-auto md:overflow-hidden "
                             onClick={(e) => e.stopPropagation()}
                             initial={{ opacity: 0, scale: 0.8, y: 50 }}
                             animate={{

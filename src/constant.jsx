@@ -453,7 +453,7 @@ export const areas = [
         loggia: "53.9",
         hallway: "53.9",
         totals: "53.9",
-        imgRoom: "/rooms/room-3.png",
+        imgRoom: "/rooms/B-07.png",
         imgPlan: "/locations/B-07.png",
     },
     {

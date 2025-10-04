@@ -1,11 +1,12 @@
 import { useRef, useState } from 'react'
-import { Building, Component, Map } from 'lucide-react';
+import { Building, ChevronDown, ChevronUp, Component, Map } from 'lucide-react';
 import { motion, AnimatePresence } from "framer-motion";
 import MapBoxBasic from './map';
 import PanoramaViewer from './panorama-viewer';
 import { Plans } from './plans';
 import AudioPlayerWithPlaylist from './audio-player-with-playlist';
 import { Library } from './library';
+import { Room } from './room';
 
 export default function App() {
 
@@ -22,6 +23,7 @@ export default function App() {
   const controls = useRef()
   const [transition, setTransition] = useState(0);
   const [index, setIndex] = useState(0);
+  const [open, setOpen] = useState(true);
   const [isOpen, setIsOpen] = useState(false)
 
 
@@ -44,13 +46,27 @@ export default function App() {
   }
 
 
+  const handleClose = () => {
+    setIndex(0);
+    setIsOpen(false)
+  }
+
+
   return (
     <>
-      <div className='w-screen h-screen relative bg-[#1A341B]'>
-        <PanoramaViewer transition={transition} onChange={handleTransition} />
+      <div className='w-screen h-screen relative bg-[#1A341B] select-none'>
+        <PanoramaViewer isOpen={isOpen} transition={transition} onChange={handleTransition} />
 
         <div className="absolute top-1/2 left-4 -translate-y-1/2">
-          <div className="flex flex-col gap-3 text-xs md:text-sm font-light">
+          <button
+            onClick={() => setOpen(!open)}
+            className="mb-3 bg-[#1A341B] text-white px-2 py-1 rounded-lg shadow-md"
+          >
+             {open ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+          </button>
+          <div className={`flex flex-col gap-3 text-xs md:text-sm font-light transition-all duration-500 overflow-hidden 
+        ${open ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"}`}
+          >
             <button
               onClick={() => setIndex(0)}
               className={`cursor-pointer flex flex-col items-center gap-1 px-2 py-2 rounded-lg transition text-[#d4ae6f] backdrop-blur-md shadow-2xs
@@ -85,6 +101,18 @@ export default function App() {
             <button
               onClick={() => {
                 setIsOpen(true)
+                setIndex(4)
+              }}
+              className={` cursor-pointer flex flex-col items-center gap-1 px-2 py-2 rounded-lg transition text-[#d4ae6f] backdrop-blur-2xl shadow-2xs
+        ${index === 4
+                  ? "bg-[#1A341B]" : "bg-white/10 hover:bg-blue-100/20 focus:border-none"}`}
+            >
+              <Building className="w-6 h-6" />
+              Căn hộ
+            </button>
+            <button
+              onClick={() => {
+                setIsOpen(true)
                 setIndex(3)
               }}
               className={` cursor-pointer flex flex-col items-center gap-1 px-2 py-2 rounded-lg transition text-[#d4ae6f] backdrop-blur-2xl shadow-2xs
@@ -99,7 +127,7 @@ export default function App() {
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              className="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
+              className="fixed inset-0 bg-black/50 flex items-center justify-center z-[999]"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -113,7 +141,7 @@ export default function App() {
               >
 
                 <button
-                  onClick={() => setIsOpen(null)}
+                  onClick={() => handleClose()}
                   className="cursor-pointer absolute top-2 right-2 z-10 text-black transform hover:rotate-180 transition-all duration-300 duration-initial"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg"
@@ -128,11 +156,12 @@ export default function App() {
                 {index === 1 && <div className='w-full h-full rounded-xl overflow-hidden'><MapBoxBasic /></div>}
                 {index === 2 && <Plans />}
                 {index === 3 && <div className='w-full h-full rounded-xl overflow-hidden'><Library /></div>}
+                {index === 4 && <div className='w-full h-full rounded-xl overflow-hidden'><Room /></div>}
               </motion.div>
             </motion.div>
           )}
         </AnimatePresence>
-        <AudioPlayerWithPlaylist />
+        {/* <AudioPlayerWithPlaylist /> */}
       </div>
     </>
   )

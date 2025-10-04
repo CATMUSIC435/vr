@@ -1,9 +1,16 @@
-import { useFrame } from '@react-three/fiber'
-import { useRef } from 'react'
+import { useFrame, useThree } from '@react-three/fiber'
+import { useEffect, useRef } from 'react'
 import { CameraControls, ContactShadows } from '@react-three/drei'
 
 export function Scene() {
     const controls = useRef(null)
+
+    const { camera } = useThree()
+
+    // useEffect(() => {
+    //     camera.fov = 30 // 👈 mặc định thường là 75
+    //     camera.updateProjectionMatrix()
+    // }, [camera])
 
     // useFrame((_, delta) => {
     //     if (controls.current) {
@@ -20,11 +27,10 @@ export function Scene() {
             <CameraControls
                 ref={controls}
                 enableZoom={true}
-                // dollyToCursor={true}
-                // zoomToCursor={true}
-                minDistance={1}
-                maxDistance={400}
-                zoomSpeed={0.1}
+                minDistance={0.01}    // 👈 cho phép zoom cực gần
+                maxDistance={500}
+                zoomSpeed={1.5}       // 👈 zoom nhanh hơn khi cuộn
+                smoothTime={0.2}      // 👈 giảm thời gian mượt khi zoom
             />
         </>
     )
