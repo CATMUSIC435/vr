@@ -53,8 +53,8 @@ export default function PanoramaViewer({ isOpen }) {
     return (
         <>
             <div className='relative h-screen w-screen overflow-hidden'>
-                <div className='h-screen w-screen overflow-hidden'>
-                    <Canvas camera={{ position: [0, 0, 0.1], fov: 30 }}>
+                    <div className='h-screen w-screen overflow-hidden'>
+                        <Canvas camera={{ position: [0, 0, 1], fov: 30 }}>
                         <AdaptiveDpr pixelated />
                         <AdaptiveEvents />
                         <ambientLight intensity={Math.PI / 2} />

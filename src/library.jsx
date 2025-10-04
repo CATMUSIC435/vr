@@ -28,7 +28,7 @@ export function Library() {
     return (
         <div className="w-full h-full relative">
              {index === 5 && <div className="custom w-full h-full relative">
-                <EmbeddedSite /></div>}
+                <EmbeddedSite url={'https://atsaigonriverside.vn/'} /></div>}
             {index === 0 && <div className="custom w-full h-full relative"><GalleryWithPreview
                 list={list}
                 setList={setList}

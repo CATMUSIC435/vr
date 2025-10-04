@@ -1,37 +1,49 @@
-import { useFrame, useThree } from '@react-three/fiber'
-import { useEffect, useRef } from 'react'
-import { CameraControls, ContactShadows } from '@react-three/drei'
+import { useRef, useEffect } from "react";
+import { Canvas, useThree } from "@react-three/fiber";
+import { CameraControls } from "@react-three/drei";
 
 export function Scene() {
-    const controls = useRef(null)
+  const controls = useRef(null);
+  const { camera, gl } = useThree();
 
-    const { camera } = useThree()
+  useEffect(() => {
+    // 👇 setup vị trí ban đầu cho camera
+    camera.position.set(0, 0, 5);
+    camera.lookAt(0, 0, 0);
+    camera.fov = 45;
+    camera.updateProjectionMatrix();
 
-    // useEffect(() => {
-    //     camera.fov = 30 // 👈 mặc định thường là 75
-    //     camera.updateProjectionMatrix()
-    // }, [camera])
+    // 👇 setup lại CameraControls sau khi canvas render xong
+    if (controls.current) {
+      controls.current.setLookAt(0, 0, 5, 0, 0, 0, true);
+    }
+  }, [camera]);
 
-    // useFrame((_, delta) => {
-    //     if (controls.current) {
-    //         controls.current.azimuthAngle += delta * 0.1   // xoay chậm (0.1 rad/s)
-    //         controls.current.update(delta)
-    //     }
-    // })
+  return (
+    <>
+      <ambientLight intensity={1.2} />
 
-    return (
-        <>
-            <ambientLight intensity={0.5 * Math.PI} />
-            {/* <ContactShadows position={[0, -9, 0]} opacity={0.7} scale={40} blur={1} /> */}
+      <CameraControls
+        ref={controls}
+        args={[camera, gl.domElement]} // 👈 Cực quan trọng: gắn camera & domElement
+        enableZoom={true}
+        zoomSpeed={1.2}
+        minDistance={0.001}
+        maxDistance={500}
+        smoothTime={0.3}
+      />
+    </>
+  );
+}
 
-            <CameraControls
-                ref={controls}
-                enableZoom={true}
-                minDistance={0.01}    // 👈 cho phép zoom cực gần
-                maxDistance={500}
-                zoomSpeed={1.5}       // 👈 zoom nhanh hơn khi cuộn
-                smoothTime={0.2}      // 👈 giảm thời gian mượt khi zoom
-            />
-        </>
-    )
+export default function App() {
+  return (
+    <Canvas>
+      <Scene />
+      <mesh>
+        <boxGeometry args={[1, 1, 1]} />
+        <meshStandardMaterial color="orange" />
+      </mesh>
+    </Canvas>
+  );
 }
