@@ -27,11 +27,13 @@ export function Swiper3D() {
                 className="mySwiper"
             >
                 {[
-                    "https://picsum.photos/id/1018/600/400",
-                    "https://picsum.photos/id/1015/600/400",
-                    "https://picsum.photos/id/1019/600/400",
-                    "https://picsum.photos/id/1020/600/400",
-                    "https://picsum.photos/id/1021/600/400",
+                    // "/at-t1.jpg",
+                    // "/at-t2.jpg",
+                    "/at-t3.jpg",
+                    "/at-t3.jpg",
+                    "/at-t3.jpg",
+                    "/at-t3.jpg",
+                    "/at-t3.jpg",
                 ].map((img, index) => (
                     <SwiperSlide
                         key={index}

@@ -1,12 +1,16 @@
 import { Hotspot } from "./hotspot";
 
+function getRandom100to300() {
+  return Math.floor(Math.random() * (300 - 100 + 1)) + 100;
+}  
+
 export default function HotspotCircle() {
-    const count = 10; // số hotspot muốn tạo
-    const radius = 500; // bán kính vòng tròn
-    const centerY = -100; // độ cao (Y)
+    const count = 20;
+    const radius = 500;
+    const centerY = -110;
 
     const hotspots = Array.from({ length: count }, (_, i) => {
-        const angle = (i / count) * Math.PI * 2; // chia đều góc
+        const angle = (i / count) * Math.PI;
         const x = Math.cos(angle) * radius;
         const z = Math.sin(angle) * radius;
         return {
@@ -23,7 +27,8 @@ export default function HotspotCircle() {
                     key={i}
                     position={spot.position}
                     label={spot.label}
-                    image={spot.image}
+                    image={spot.image} color="#ff8800"
+                    top={getRandom100to300()}
                 />
             ))}
         </>

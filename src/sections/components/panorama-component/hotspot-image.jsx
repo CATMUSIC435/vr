@@ -19,8 +19,6 @@ export function HotspotImage({ position, label, image }) {
     useFrame((_, delta) => {
         if (hovered && imageRef.current) {
             blinkRef.current += delta * 5;
-
-            // Nhấp nháy nhẹ, không gắt
             imageRef.current.material.opacity = 0.8 + 0.2 * Math.sin(blinkRef.current * 2);
 
             if (glowRef.current) {
@@ -35,22 +33,16 @@ export function HotspotImage({ position, label, image }) {
 
     return (
         <>
-            {/* Chấm hotspot */}
-
-            {/* Hiệu ứng tỏa sáng */}
             <mesh position={position} scale={[1.8, 1.8, 1.8]}>
                 <sphereGeometry args={[0.05, 32, 32]} />
                 <meshBasicMaterial color="orange" transparent opacity={0.3} />
             </mesh>
 
-            {/* Dây nối */}
             <mesh geometry={tubeGeometry}>
                 <meshStandardMaterial color="orange" emissive="orange" emissiveIntensity={1.5} />
             </mesh>
 
-            {/* Ảnh + viền glow */}
             <group>
-                {/* Ảnh gốc */}
                 <mesh
                     ref={imageRef}
                     position={[end.x, end.y + 1, end.z]}
@@ -62,13 +54,12 @@ export function HotspotImage({ position, label, image }) {
                     <meshBasicMaterial map={texture} side={THREE.DoubleSide} transparent />
                 </mesh>
 
-                {/* Glow nhẹ */}
                 <mesh
                     ref={glowRef}
                     visible={false}
                     position={[end.x, end.y + 1, end.z]}
                     rotation={[-Math.PI / 2, 0, 39.75]}
-                    scale={[1.03, 1.03, 1]} // viền nhỏ hơn, chỉ nhô nhẹ
+                    scale={[1.03, 1.03, 1]} 
                 >
                     <planeGeometry args={[100, 80]} />
                     <meshBasicMaterial
