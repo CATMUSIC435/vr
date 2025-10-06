@@ -6,7 +6,7 @@ export function FAQList() {
     return (
         <div className="flex flex-wrap w-full mx-auto space-y-3 p-4">
             {faqs.map((faq, index) => (
-                <div className="w-1/2">
+                <div className="w-1/2" key={index}>
                     <FAQItem key={index} {...faq} />
                 </div>
             ))}
