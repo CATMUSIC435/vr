@@ -6,7 +6,6 @@ import { createRoot } from "react-dom/client";
 import { MapTypeButtons } from "./components/map-component/map-type-buttons";
 import { MapStyleSelector } from "./components/map-component/map-style-selector";
 import { MapContainer } from "./components/map-component/map-container";
-import { MapControls } from "./components/map-component/map-controls";
 import { pots, typeArray } from "../constants/pot";
 import { enable3DTerrain } from "./components/map-component/enable-3d-terrain";
 import { mapStyles } from "../constants/map";
@@ -91,10 +90,9 @@ export default function MapBoxBasic() {
 
   return (
     <div className="w-full h-full overflow-hidden relative">
-      <MapControls onReset={handleReset} />
       <MapContainer mapContainer={mapContainer} />
       <MapStyleSelector mapStyle={mapStyle} setMapStyle={setMapStyle} />
-      <MapTypeButtons typeArray={typeArray} changePlace={changePlace} />
+      <MapTypeButtons typeArray={typeArray} changePlace={changePlace} onReset={handleReset} />
     </div>
   );
 }
