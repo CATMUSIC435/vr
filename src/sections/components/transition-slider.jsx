@@ -48,14 +48,14 @@ export function TransitionSlider({
         </div>
       </label>
 
-<input
+      <input
         type="range"
         min="0"
         max="1"
         step="0.001"
         value={value}
         onChange={onChange}
-        className={`slider w-full h-2 rounded-full cursor-pointer appearance-none bg-gradient-to-r from-yellow-400 to-orange-500`}
+        className={`slider w-full h-2 rounded-full cursor-pointer appearance-none bg-gradient-to-r from-white to-[#d4ae6f]`}
       />
     </div>
   )
