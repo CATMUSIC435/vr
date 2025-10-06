@@ -3,9 +3,10 @@ import { Component, Map, Newspaper, Video } from "lucide-react";
 import EmbeddedSite from "../components/atoms/embedded-site";
 import { Swiper3D } from "./components/swiper-3d";
 import { GalleryWithPreview } from "./components/gallery-with-preview";
-import { SwipperNew } from "./components/swipper-new";
 import { Playlist } from "./components/playlist";
 import { SvgImageEffect } from "./components/svg-image-effect";
+import { IconButtonVtl } from "../components/molecules/icon-button-vtl";
+import { NewsSwiper } from "./components/new-component/news-swiper";
 
 const images = [
     '/utility/bar.jpg',
@@ -15,112 +16,92 @@ const images = [
     '/utility/coffee.jpg',
 ]
 
-const images_another = [
-    '/4.jpg',
-    '/5.jpg',
-    '/6.jpg',
-]
+const navButtons = [
+    {
+        idx: 5,
+        name: "Thông tin",
+        icon: Component,
+    },
+    {
+        idx: 4,
+        name: "CT",
+        icon: Map,
+    },
+    {
+        idx: 1,
+        name: "Bản đồ",
+        icon: Map,
+    },
+    {
+        idx: 0,
+        name: "Thư viện",
+        icon: Component,
+    },
+    {
+        idx: 2,
+        name: "Video",
+        icon: Video,
+    },
+    {
+        idx: 3,
+        name: "Tin tức",
+        icon: Newspaper,
+    },
+];
+
 
 export function Library() {
     const [list, setList] = useState(images)
     const [index, setIndex] = useState(5)
 
+    const componentMap = {
+        0: (
+            <div className="custom w-full h-full relative">
+                <GalleryWithPreview list={list} setList={setList} imagesAnother={[]} />
+            </div>
+        ),
+        1: (
+            <div className="w-full h-full">
+                <SvgImageEffect />
+            </div>
+        ),
+        2: (
+            <div className="w-full h-full">
+                <Playlist />
+            </div>
+        ),
+        3: (
+            <NewsSwiper />
+        ),
+        4: (
+            <div className="w-full h-full relative">
+                <div className="absolute top-0 left-0 w-full h-full">
+                    <Swiper3D />
+                </div>
+            </div>
+        ),
+        5: (
+            <div className="custom w-full h-full relative">
+                <EmbeddedSite url="https://atsaigonriverside.vn/" />
+            </div>
+        ),
+    }
+
     return (
         <div className="w-full h-full relative">
-            {index === 5 && <div className="custom w-full h-full relative">
-                <EmbeddedSite url={'https://atsaigonriverside.vn/'} /></div>}
-            {index === 0 && <div className="custom w-full h-full relative"><GalleryWithPreview
-                list={list}
-                setList={setList}
-                imagesAnother={[]}
-            /></div>}
-            {index === 1 && <div className="w-full h-full">
-                <SvgImageEffect />
-            </div>}
-            {index === 2 && <div className="w-full h-full">
-                <Playlist />
-            </div>}
-
-            {
-                index === 3 && (
-                    <div>
-                        <SwipperNew />
-                    </div>
-                )
-            }
-
-            {
-                index === 4 && (
-                    <div className="w-full h-hull relative">
-                        <div className="absolute top-0 left-0 w-full h-full">
-                            <Swiper3D />
-                        </div>
-                    </div>
-                )
-            }
-
-
-
+            {componentMap[index] || null}
 
             <div className="absolute bottom-0 left-1/2 -translate-x-1/2">
                 <div className="flex gap-3 text-xs md:text-sm font-light">
-                    <button
-                        onClick={() => setIndex(5)}
-                        className={`w-20 cursor-pointer flex flex-col items-center gap-1 px-2 py-2 rounded-lg transition text-[#d4ae6f] backdrop-blur-md shadow-2xs
-        ${index === 5 ? "bg-[#1A341B]" : "hover:bg-blue-100/20 focus:border-none"}`}
-                    >
-                        <Component className="w-6 h-6" />
-                        Thông tin
-                    </button>
-                    <button
-                        onClick={() => {
-                            setIndex(4)
-                        }}
-                        className={`w-20 cursor-pointer flex flex-col items-center gap-1 px-2 py-2 rounded-lg transition text-[#d4ae6f] backdrop-blur-2xl shadow-2xs
-        ${index === 4 ? "bg-[#1A341B]" : "hover:bg-blue-100/20 focus:border-none"}`}
-                    >
-                        <Map className="w-6 h-6" />
-                        CT
-                    </button>
-                    <button
-                        onClick={() => {
-                            setIndex(1)
-                        }}
-                        className={`w-20 cursor-pointer flex flex-col items-center gap-1 px-2 py-2 rounded-lg transition text-[#d4ae6f] backdrop-blur-2xl shadow-2xs
-        ${index === 1 ? "bg-[#1A341B]" : "hover:bg-blue-100/20 focus:border-none"}`}
-                    >
-                        <Map className="w-6 h-6" />
-                        Bản đồ
-                    </button>
-                    <button
-                        onClick={() => setIndex(0)}
-                        className={`w-20 cursor-pointer flex flex-col items-center gap-1 px-2 py-2 rounded-lg transition text-[#d4ae6f] backdrop-blur-md shadow-2xs
-        ${index === 0 ? "bg-[#1A341B]" : "hover:bg-blue-100/20 focus:border-none"}`}
-                    >
-                        <Component className="w-6 h-6" />
-                        Thư viện
-                    </button>
-
-                    <button
-                        onClick={() => {
-                            setIndex(2)
-                        }}
-                        className={`w-20 cursor-pointer flex flex-col items-center gap-1 px-2 py-2 rounded-lg transition text-[#d4ae6f] backdrop-blur-2xl shadow-2xs
-        ${index === 2 ? "bg-[#1A341B]" : "hover:bg-blue-100/20 focus:border-none"}`}
-                    >
-                        <Video className="w-6 h-6" />
-                        Video
-                    </button>
-                    <button
-                        onClick={() => {
-                            setIndex(3)
-                        }}
-                        className={`w-20 cursor-pointer flex flex-col items-center gap-1 px-2 py-2 rounded-lg transition text-[#d4ae6f] backdrop-blur-2xl shadow-2xs
-        ${index === 3 ? "bg-[#1A341B]" : "hover:bg-blue-100/20 focus:border-none"}`}
-                    >
-                        <Newspaper className="w-6 h-6" />
-                        Tin tức
-                    </button>
+                    {navButtons.map((item) => (
+                        <IconButtonVtl
+                            key={item.idx}
+                            icon={item.icon}
+                            name={item.name}
+                            onClick={() => setIndex(item.idx)}
+                            active={index === item.idx}
+                        />
+                    ))}
                 </div>
             </div>
         </div>

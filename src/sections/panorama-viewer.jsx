@@ -4,12 +4,12 @@ import { useState } from 'react'
 import { MeshPano } from './components/panorama-component/mesh-pano';
 import { Scene } from './components/panorama-component/scene';
 import { Moon, Sun } from 'lucide-react';
-import HotspotCircle from './components/panorama-component/hotspot-circle';
 import { HotspotImage } from './components/panorama-component/hotspot-image';
 import { useModal } from '../contexts/modal-context';
+import ListHotspot from './components/panorama-component/listHotpot';
 
 export default function PanoramaViewer() {
-    
+
     const { isOpen } = useModal();
     const [transition, setTransition] = useState(0);
 
@@ -31,8 +31,6 @@ export default function PanoramaViewer() {
         const value = parseFloat(e.target.value);
         setTransition(value);
     }
-
-    // console.log(transi tion);
 
 
     return (
@@ -60,9 +58,9 @@ export default function PanoramaViewer() {
                             image="/12.jpg"
                         />
 
-                        {!isOpen ? <HotspotCircle /> : null}
+                        {/* {!isOpen ? <HotspotCircle /> : null} */}
 
-
+                        {!isOpen ? <ListHotspot /> : null}
                         <Scene />
 
                         <Environment preset="city" />

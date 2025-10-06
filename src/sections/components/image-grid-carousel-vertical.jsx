@@ -43,7 +43,7 @@ export function ImageGridCarouselVertical() {
                                 <img
                                     src={item.imgRoom}
                                     alt={`Image ${i}`}
-                                    className="w-auto h-full object-cover rounded-xl shadow-lg transition-all duration-300 group-hover:brightness-110 group-hover:scale-[1.02]"
+                                    className="mx-auto w-auto h-full object-cover rounded-xl shadow-lg transition-all duration-300 group-hover:brightness-110 group-hover:scale-[1.02]"
                                 />
                                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent rounded-b-xl p-2">
                                     <span className="text-white text-sm font-medium tracking-wide">

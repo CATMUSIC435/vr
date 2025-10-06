@@ -1,25 +1,8 @@
 import { useState } from "react";
 import { ChevronDown, MessageCircle } from "lucide-react";
+import { faqs } from "../constants/faqs";
 
 export function FAQList() {
-    const faqs = [
-        {
-            question: "Làm sao để đăng tin bất động sản?",
-            answer:
-                "Bạn cần đăng nhập tài khoản, sau đó vào mục 'Đăng tin' và điền đầy đủ thông tin về căn hộ, giá, vị trí, hình ảnh...",
-        },
-        {
-            question: "Phí đăng tin là bao nhiêu?",
-            answer:
-                "Hệ thống cung cấp gói miễn phí 7 ngày. Sau đó, bạn có thể chọn gói Premium để tăng hiển thị và ưu tiên tìm kiếm.",
-        },
-        {
-            question: "Tôi có thể chỉnh sửa tin đã đăng không?",
-            answer:
-                "Có. Vào trang 'Quản lý tin đăng', chọn tin bạn muốn chỉnh sửa, cập nhật thông tin và lưu lại.",
-        },
-    ];
-
     return (
         <div className="flex flex-wrap w-full mx-auto space-y-3 p-4">
             {faqs.map((faq, index) => (
@@ -35,8 +18,7 @@ export function FAQItem({ question, answer }) {
     const [open, setOpen] = useState(false);
 
     return (
-        <div className=" rounded-xl overflow-hidden transition-all shadow-sm">
-            {/* Header */}
+        <div className="overflow-hidden transition-all shadow-sm">
             <button
                 onClick={() => setOpen(!open)}
                 className="w-full flex justify-between items-center px-4 py-3 text-left"
@@ -52,7 +34,6 @@ export function FAQItem({ question, answer }) {
                 />
             </button>
 
-            {/* Collapse nội dung */}
             <div
                 className={`transition-all duration-500 overflow-hidden ${open ? "max-h-[300px] opacity-100" : "max-h-0 opacity-0"
                     }`}

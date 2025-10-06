@@ -1,6 +1,23 @@
 import { useState } from "react";
 import VideoPlayer from "../../components/molecules/video-player";
 
+const videos = [
+    {
+        idx: 1,
+        name: 'ATR',
+        desc: "",
+        img: '/atsaigonriverside-lologo.png',
+        link: 'https://atsaigonriverside.vn/wp-content/themes/dxmd/assets/videos/atr.mp4'
+    },
+    {
+        idx: 1,
+        name: 'ATR',
+        desc: "",
+        img: '/2.jpg',
+        link: '/video.mp4'
+    }
+]
+
 export function Playlist() {
     const [open, setOpen] = useState(false);
     const [link, setLink] = useState('https://atsaigonriverside.vn/wp-content/themes/dxmd/assets/videos/atr.mp4');
@@ -21,23 +38,26 @@ export function Playlist() {
                 >
                     {open && (
                         <div className="flex flex-col gap-1">
-                            {Array(3)
-                                .fill(0)
-                                .map((_, i) => (
+                            {videos.map((item, i) => (
+                                <div className="relative group">
                                     <img
-                                        onClick={onClick}
+                                        onClick={() => setLink(item.link)}
                                         key={i}
-                                        src="https://i.ibb.co/qn3WVWd/plan.jpg"
-                                        alt={`Mặt bằng ${i + 1}`}
-                                        className="w-full object-cover rounded-md cursor-pointer hover:scale-105 transition-transform"
+                                        src={item.img}
+                                        alt={item.desc}
+                                        className="w-full object-cover rounded-sm cursor-pointer group-hover:scale-105 transition-transform  duration-200 ease-linear"
                                     />
-                                ))}
+                                    <div className="absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transition-all duration-200 ease-linear">
+                                        <p className="text-sm font-medium">{item.name}</p>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                     )}
                 </div>
                 <button
                     onClick={() => setOpen(!open)}
-                    className="bg-gray-800 text-white p-2 rounded-r-md hover:bg-gray-700 transition"
+                    className="bg-[#1A341B] text-white p-2 rounded-r-md transition"
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"

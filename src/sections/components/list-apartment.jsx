@@ -1,3 +1,4 @@
+import { roomsxArray } from "../../constants/constant";
 import { ApartmentCard } from "./apartment-card";
 import { ImageGridCarouselVertical } from "./image-grid-carousel-vertical";
 
@@ -7,13 +8,12 @@ export function ListApartment() {
             <div className="grid grid-cols-4 h-full">
                 <div className="relative w-full h-full">
                     <div className="absolute top-0 left-0 w-full h-full">
-                        <div className="h-full grid grid-cols-1 gap-2">
-
-                            <ApartmentCard />
-                            <ApartmentCard />
-
-                            <ApartmentCard />
-                            <ApartmentCard />
+                        <div className="h-full flex flex-col gap-2">
+                            {
+                                roomsxArray.map((apt, i) => (
+                                    <ApartmentCard key={apt.idx} {...apt} />
+                                ))
+                            }
                         </div>
                     </div>
                 </div>

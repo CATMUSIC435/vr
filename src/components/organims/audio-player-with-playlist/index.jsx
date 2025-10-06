@@ -48,15 +48,15 @@ export function AudioPlayerWithPlaylist() {
         }
     }, [currentIndex])
 
-    useEffect(() => {
-        const handleClick = () => {
-            if (!isPlaying) {
-                play()
-            }
-        }
-        window.addEventListener('click', handleClick, { once: true })
-        return () => window.removeEventListener('click', handleClick)
-    }, [])
+    // useEffect(() => {
+    //     const handleClick = () => {
+    //         if (!isPlaying) {
+    //             play()
+    //         }
+    //     }
+    //     window.addEventListener('click', handleClick, { once: true })
+    //     return () => window.removeEventListener('click', handleClick)
+    // }, [])
 
     return (
         <div className={clsx(!isExpanded ? 'w-10 md:w-[90px] fixed md:top-auto bottom-4 right-2 z-50' : 'fixed md:top-auto bottom-4 right-2 w-[260px] md:w-[300px] z-50')}>
@@ -85,8 +85,8 @@ export function AudioPlayerWithPlaylist() {
                             <h2 className="text-white transition-all duration-500 text-sm leading-6 truncate">
                                 🎵 {playlist[currentIndex].title}
                             </h2>
-                        </div> 
-                    </div>: null}
+                        </div>
+                    </div> : null}
                 </div>
                 <div className={`transition-all duration-100  ${isExpanded ? 'mt-3 max-h-auto' : 'max-h-0 opacity-0'}`}>
 
@@ -110,7 +110,7 @@ export function AudioPlayerWithPlaylist() {
                     </div> */}
                 </div>
                 <div className='absolute left-0 top-1/2 -translate-y-1/2'>
-                    
+
                     <div>
                         <div className="flex-auto flex items-center justify-evenly">
                             <button

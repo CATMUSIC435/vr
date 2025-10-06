@@ -2,10 +2,16 @@ import { useState } from 'react'
 import { ChevronDown, ChevronUp, Component, Map } from 'lucide-react';
 import ImageGridCarousel from './components/image-grid-carousel';
 import { ListApartment } from './components/list-apartment';
+import { IconButtonVtl } from '../components/molecules/icon-button-vtl';
 
 export function Room() {
-    const [index, setIndex] = useState(0);
     const [open, setOpen] = useState(true);
+    const [index, setIndex] = useState(0);
+
+    const buttonList = [
+        { idx: 0, name: "theo Layout", icon: Component },
+        { idx: 1, name: "Tất cả", icon: Component },
+    ];
 
 
     return (
@@ -26,25 +32,15 @@ export function Room() {
                     <div className={`flex gap-3 text-xs md:text-sm font-light transition-all duration-500 overflow-hidden 
         ${open ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"}`}
                     >
-                        <button
-                            onClick={() => setIndex(0)}
-                            className={`cursor-pointer flex flex-col items-center gap-1 px-2 py-2 rounded-lg transition text-[#d4ae6f] backdrop-blur-md shadow-2xs
-        ${index === 0 ? "bg-[#1A341B]" : "bg-white/10 hover:bg-blue-100/20 focus:border-none"}`}
-                        >
-                            <Component className="w-6 h-6" />
-                            theo Layout
-                        </button>
-
-                        <button
-                            onClick={() => {
-                                setIndex(1)
-                            }}
-                            className={` cursor-pointer flex flex-col items-center gap-1 px-2 py-2 rounded-lg transition text-[#d4ae6f] backdrop-blur-2xl shadow-2xs
-        ${index === 1 ? "bg-[#1A341B]" : "bg-white/10 hover:bg-blue-100/20 focus:border-none"}`}
-                        >
-                            <Map className="w-6 h-6" />
-                            Tất cả
-                        </button>
+                        {buttonList.map((item) => (
+                            <IconButtonVtl
+                                key={item.idx}
+                                icon={item.icon}
+                                name={item.name}
+                                active={index === item.idx}
+                                onClick={() => setIndex(item.idx)}
+                            />
+                        ))}
                     </div>
                 </div>
             </div>

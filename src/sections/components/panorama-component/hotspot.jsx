@@ -2,7 +2,9 @@ import { Html } from "@react-three/drei";
 import * as THREE from "three";
 import { useMemo } from "react";
 
-export function Hotspot({ position, label, image, top }) {
+export function Hotspot({ position, label, image, top, heightImg }) {
+    console.log(position, label, image, top);
+
 
     const start = new THREE.Vector3(...position);
     const end = new THREE.Vector3(position[0], position[1] + 100, position[2]);
@@ -38,25 +40,24 @@ export function Hotspot({ position, label, image, top }) {
                 />
             </mesh>
 
-            {/* Label / Ảnh - đặt ngay trên end */}
             <Html position={[end.x, end.y + 0.5, end.z]} distanceFactor={400}>
                 <div className="relative">
                     <div className="relative p-2 z-1">
-                        <div className="absolute text-md font-medium text-center mb-1" style={{top: `-${top + 68}px`}}>
-                            <p className="text-white mb-1">Công viên</p>
+                        <div className="absolute text-left mb-1" style={{ top: `-${top + heightImg + 8}px` }}>
+                            <p className="text-xs text-white mb-1 line-clamp-1">{label}</p>
 
-                            <div className="w-20 h-16">
+                            <div style={{ height: `${heightImg}px`, width: `${heightImg * 3 / 2}px` }}>
                                 <img
                                     src={image}
                                     alt={label}
-                                    className="h-full w-full object-cover rounded"
+                                    className="h-full w-auto object-cover rounded"
                                 />
                             </div>
-                            <div className="bg-white w-[1px] mx-auto" style={{height: `${top}px`}}>
+                            <div className="bg-white w-[1px] mx-auto" style={{ height: `${top}px` }}>
 
                             </div>
                         </div>
-                        <div className="w-20">
+                        <div style={{width: `${heightImg * 3 / 2}px`}}>
                             <div className="text-xs w-4 h-4 rounded-full mt-1 bg-white relative mx-auto">
                                 <div className="w-full h-full bg-white animate-ping rounded-lg" />
                             </div>

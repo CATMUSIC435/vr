@@ -7,6 +7,37 @@ export const playlist = [
     { title: 'Rainy Day', url: '/music/Rainy Day (Radio Edit).mp3' },
 ];
 
+export const roomsx = {
+    p1: {
+        idx: 1,
+        name: 'CĂN 1 PHÒNG NGỦ + 1WC',
+        img: '2.jpg'
+    },
+    st: {
+        idx: 2,
+        name: 'CĂN STUDIO',
+        img: '2.jpg'
+    },
+    p2: {
+        idx: 3,
+        name: 'CĂN 2 PHÒNG NGỦ + 2WC',
+        img: '2.jpg'
+    },
+    p4: {
+        idx: 4,
+        name: 'CĂN 3 PHÒNG NGỦ + 2WC',
+        img: '2.jpg'
+    },
+}
+
+export const roomsxArray = Object.entries(roomsx).map(([key, value]) => ({
+    key,
+    ...value
+}));
+
+console.log(roomsxArray);
+
+
 export const zonePositions = [
     { id: "zone1", area: 1, plan: "/fills/level-5-20-22-37-01.png", name: "Tầng 5 - 20", top: 60, left: 55 },
     { id: "zone2", area: 1, plan: "/fills/level-5-20-22-37-01.png", name: "Tầng 22 - 38", top: 40, left: 55 },

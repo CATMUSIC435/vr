@@ -15,7 +15,7 @@ export function UnitDetail({ area, changeArea }) {
                         {area.title}
                     </h2>
                     <div className="flex space-x-2 text-4xl">
-                        <button onClick={() => changeArea(area.id)} className="cursor-pointer p-2 rounded-full hover:text-[#d4ae6f] hover:bg-gray-100 transition">
+                        <button onClick={() => changeArea(area.id)} className="cursor-pointer p-2 rounded-sm hover:text-[#d4ae6f] hover:bg-gray-100 transition">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
@@ -28,7 +28,7 @@ export function UnitDetail({ area, changeArea }) {
                             </svg>
                         </button>
 
-                        <button onClick={() => changeArea(area.id, true)} className="cursor-pointer p-2 rounded-full hover:text-[#d4ae6f] hover:bg-gray-100 transition">
+                        <button onClick={() => changeArea(area.id, true)} className="cursor-pointer p-2 rounded-sm hover:text-[#d4ae6f] hover:bg-gray-100 transition">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
@@ -43,17 +43,6 @@ export function UnitDetail({ area, changeArea }) {
                     </div>
 
                 </div>
-
-
-
-                {/* <div className="w-full" >
-                    <img
-                        src={area.imgPlan}
-                        useMap="#image-map"
-                        alt="floor plan"
-                        className="w-full h-auto"
-                    />
-                </div> */}
 
                 <div className="overflow-x-auto">
                     <table className="w-full border border-[#3a2c1c]/50 text-sm">

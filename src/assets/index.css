@@ -33,7 +33,7 @@ body {
   min-height: 100vh;
 }
 
-.custom .swiper-button-next,
-.custom .swiper-button-prev {
+.swiper-button-next,
+.swiper-button-prev {
   color: white !important;
 }

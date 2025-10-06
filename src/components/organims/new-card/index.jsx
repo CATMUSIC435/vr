@@ -1,36 +1,42 @@
-export function NewsCard() {
+export function NewsCard({ id, title, excerpt, link, image, date }) {
+    const formattedDate = new Date(date).toLocaleDateString("vi-VN", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+    });
+
     return (
-        <div className="pb-16 text-white grid grid-cols-1">
+        <div
+            key={id}
+            className="pb-6 text-white grid grid-cols-1 cursor-pointer hover:opacity-90 transition-all duration-300"
+            onClick={() => window.open(link, "_blank")}
+        >
             <div className="mb-2 overflow-hidden relative">
                 <div className="">
                     <img
-                        src="https://atsaigonriverside.vn/wp-content/uploads/2025/09/at-9536-9400.jpg"
-                        alt="Đơn vị phát triển dự án DXMD Vietnam chính thức ký kết hợp tác với hơn 35 đối tác phân phối chiến lược dưới sự chứng kiến của Chủ đầu tư A&amp;T Group, đơn vị phát triển dự án DXMD Vietnam cùng với các lãnh đạo cấp cao đến từ các đơn vị."
-                        className="w-full h-auto object-cover rounded-2xl"
+                        src={image || "/fallback.jpg"}
+                        alt={title}
+                        className="w-full h-56 md:h-64 object-cover rounded-md transition-transform duration-500 group-hover:scale-105"
                         loading="lazy"
                     />
                 </div>
-                
+
                 <div className="absolute bottom-2 left-2 mt-2 flex justify-between">
-                    <div className="">
-                        <span className="text-xs md:text-sm font-medium">
-                            09 / 18 / 2025
-                        </span>
-                    </div>
+                    <span className="text-xs md:text-sm font-medium bg-black/40 px-2 py-1 rounded-md backdrop-blur-sm">
+                        {formattedDate}
+                    </span>
                 </div>
             </div>
 
             <div className="col-span-2 flex flex-col gap-1 px-2">
-                <h3 className="text-md md:text-lg line-clamp-2 font-medium text-white">
-                    A&amp;T Saigon Riverside khẳng định sức hút bên sông Sài Gòn với hơn
-                    35 đối tác phân phối chiến lược
-                </h3>
-
-
-                <p className="hidden md:block text-xs line-clamp-3">
-                    (ĐTCK) Vào ngày 11/09/2025, đơn vị phát triển DXMD Vietnam ký kết hợp
-                    tác chiến lược cùng hơn 35 đối...
-                </p>
+                <h3
+                    className="text-md md:text-lg line-clamp-2 font-medium text-white"
+                    dangerouslySetInnerHTML={{ __html: title }}
+                />
+                <p
+                    className="hidden md:block text-xs line-clamp-3 text-gray-200"
+                    dangerouslySetInnerHTML={{ __html: excerpt }}
+                />
             </div>
         </div>
     );

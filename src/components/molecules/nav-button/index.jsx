@@ -1,8 +1,9 @@
 import { clsx } from "clsx";
 import { useSound } from "../../../hooks/use-sound";
+import { linkSound } from "../../../constants";
 
 export default function NavButton({ label, icon: Icon, active, onClick, className }) {
-    const { playSound } = useSound("https://actions.google.com/sounds/v1/tools/18v_cordless_drill_switch.ogg");
+    const { playSound } = useSound(linkSound);
 
 
     const handleClick = () => {
