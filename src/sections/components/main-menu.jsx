@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Book, Building, ChevronDown, ChevronUp, CircleQuestionMark, Component, Map, Maximize2, TableOfContents } from 'lucide-react';
+import { Book, Building, ChevronDown, ChevronUp, CircleQuestionMark, Component, FolderKanban, LibraryBig, Map, Maximize2, TableOfContents } from 'lucide-react';
 import MapBoxBasic from '../map';
 import { Plans } from './../plans';
 import { Library } from '../library';
@@ -29,12 +29,12 @@ const menuItems = [
     },
     {
         label: "Căn hộ",
-        icon: Building,
+        icon: FolderKanban,
         idx: 4,
     },
     {
         label: "Thư viện",
-        icon: Building,
+        icon: LibraryBig,
         idx: 3,
     },
 ];

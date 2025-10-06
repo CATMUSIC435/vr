@@ -2,17 +2,19 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Grid, Pagination } from "swiper/modules";
+import { Grid, Navigation, Pagination } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/grid";
 import "swiper/css/pagination";
 import { areas } from "../../constants/constant";
 import { FloorPlanDetail } from "./ploor-component/floor-plan-detail";
+import { useIsMobile } from "../../hooks/use-is-mobile";
 
 export default function ImageGridCarousel() {
 
     const [modalArea, setModalArea] = useState(null);
+    const isMobile = useIsMobile(768);
     const [area, setArea] = useState(null);
 
     const handleClick = (area) => {
@@ -26,12 +28,14 @@ export default function ImageGridCarousel() {
         <div className="h-full w-full flex items-center">
             <div className="w-full mx-auto">
                 <Swiper
-                    modules={[Grid, Pagination]}
+                    modules={[Grid, Pagination, Navigation]}
                     pagination={{ clickable: true }}
-                    grid={{ rows: 3, fill: "row" }}
+                    grid={{ rows: isMobile ? 2 : 3, fill: "row" }}
                     spaceBetween={10}
-                    slidesPerView={4}
+                    slidesPerView={isMobile ? 2 : 4}
                     speed={600}
+                    mousewheel={true}
+                    navigation
                 >
                     {areas.map((item, i) => (
                         <SwiperSlide key={i}>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Component, Map, Newspaper, Video } from "lucide-react";
+import { Info, Map, Newspaper, SquareLibrary, SquarePercent, Video } from "lucide-react";
 import EmbeddedSite from "../components/atoms/embedded-site";
 import { Swiper3D } from "./components/swiper-3d";
 import { GalleryWithPreview } from "./components/gallery-with-preview";
@@ -20,12 +20,12 @@ const navButtons = [
     {
         idx: 5,
         name: "Thông tin",
-        icon: Component,
+        icon: Info,
     },
     {
         idx: 4,
         name: "CT",
-        icon: Map,
+        icon: SquarePercent,
     },
     {
         idx: 1,
@@ -35,7 +35,7 @@ const navButtons = [
     {
         idx: 0,
         name: "Thư viện",
-        icon: Component,
+        icon: SquareLibrary,
     },
     {
         idx: 2,
@@ -91,7 +91,7 @@ export function Library() {
         <div className="w-full h-full relative">
             {componentMap[index] || null}
 
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2">
+            <div className="z-10 absolute bottom-1 md:bottom-0 left-1/2 -translate-x-1/2">
                 <div className="flex gap-3 text-xs md:text-sm font-light">
                     {navButtons.map((item) => (
                         <IconButtonVtl

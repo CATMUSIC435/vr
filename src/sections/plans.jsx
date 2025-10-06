@@ -53,7 +53,7 @@ export function ImageMapHighlight() {
         {zonePositions.map((zone) => (
           <div
             key={zone.id}
-            className={`absolute cursor-pointer text-[#1A341B]/80 hover:text-[#1A341B] tex-xs md:text-sm px-2 md:px-4 py-1 border-t-[1px] border-b-[1px] hover:scale-110 transition-all duration-200 font-medium border-dashed
+            className={`absolute cursor-pointer text-white md:text-[#1A341B]/80 hover:text-[#1A341B] text-xs md:text-sm px-2 md:px-4 py-1 border-t-[1px] border-b-[1px] hover:scale-110 transition-all duration-200 font-medium border-dashed
             ${hoverZone === zone.id
                 ? "border-indigo-300/60"
                 : "border-[#d4ae6f]"

@@ -5,15 +5,18 @@ import "swiper/css"
 import "swiper/css/effect-coverflow"
 import "swiper/css/pagination"
 import { services } from "../../constants/service"
+import { useIsMobile } from "../../hooks/use-is-mobile"
 
 export function Swiper3D() {
+
+    const isMobile = useIsMobile(768);
     return (
         <div className="w-full mx-auto py-10">
             <Swiper
                 effect="coverflow"
                 grabCursor={true}
                 centeredSlides={true}
-                slidesPerView={2}
+                slidesPerView={isMobile? 1 : 2}
                 loop={true}
                 coverflowEffect={{
                     rotate: 30,

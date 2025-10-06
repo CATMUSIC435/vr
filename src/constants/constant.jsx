@@ -124,6 +124,7 @@ export const areas = [
         totals: "61.5",
         imgRoom: "/rooms/A-01.png",
         imgPlan: "/locations/A-01.png",
+        type: roomsx.p2.idx,
     },
     {
         id: "A-02",
@@ -141,6 +142,7 @@ export const areas = [
         totals: "61.6",
         imgRoom: "/rooms/A-02.png",
         imgPlan: "/locations/A-02.png",
+        type: roomsx.p2.idx,
     },
     {
         id: "A-03",
@@ -163,6 +165,7 @@ export const areas = [
         totals: "86.7",
         imgRoom: "/rooms/A-03.png",
         imgPlan: "/locations/A-03.png",
+        type: roomsx.p4.idx,
     },
     {
         id: "A-04",
@@ -184,6 +187,7 @@ export const areas = [
         totals: "83.4",
         imgRoom: "/rooms/A-04.png",
         imgPlan: "/locations/A-04.png",
+        type: roomsx.p4.idx,
     },
     {
         id: "A-05",
@@ -201,6 +205,7 @@ export const areas = [
         totals: "41.9",
         imgRoom: "/rooms/A-05.png",
         imgPlan: "/locations/A-05.png",
+        type: roomsx.p1.idx,
     },
     {
         id: "A-06",
@@ -220,6 +225,7 @@ export const areas = [
         totals: "58.1",
         imgRoom: "/rooms/A-06.png",
         imgPlan: "/locations/A-06.png",
+        type: roomsx.p2.idx,
     },
     {
         id: "A-07",
@@ -239,6 +245,7 @@ export const areas = [
         totals: "58.1",
         imgRoom: "/rooms/A-07.png",
         imgPlan: "/locations/A-07.png",
+        type: roomsx.p2.idx,
     },
     {
         id: "A-08",
@@ -258,6 +265,7 @@ export const areas = [
         totals: "59.2",
         imgRoom: "/rooms/A-08.png",
         imgPlan: "/locations/A-08.png",
+        type: roomsx.p2.idx,
     },
     {
         id: "A-09",
@@ -275,6 +283,7 @@ export const areas = [
         totals: "60.4",
         imgRoom: "/rooms/A-09.png",
         imgPlan: "/locations/A-09.png",
+        type: roomsx.p2.idx,
     },
     {
         id: "A-10",
@@ -292,6 +301,7 @@ export const areas = [
         totals: "39.6",
         imgRoom: "/rooms/A-10.png",
         imgPlan: "/locations/A-10.png",
+        type: roomsx.p1.idx,
     },
     {
         id: "A-11",
@@ -311,6 +321,7 @@ export const areas = [
         totals: "60.5",
         imgRoom: "/rooms/A-11.png",
         imgPlan: "/locations/A-11.png",
+        type: roomsx.p2.idx,
     },
     {
         id: "A-11A",
@@ -330,6 +341,7 @@ export const areas = [
         totals: "60.5m",
         imgRoom: "/rooms/A-11A.png",
         imgPlan: "/locations/A-11A.png",
+        type: roomsx.p2.idx,
     },
     {
         id: "A-12",
@@ -349,6 +361,7 @@ export const areas = [
         totals: "58.7",
         imgRoom: "/rooms/A-12.png",
         imgPlan: "/locations/A-12.png",
+        type: roomsx.p2.idx,
     },
     {
         id: "A-15",
@@ -369,6 +382,7 @@ export const areas = [
         totals: "74.8",
         imgRoom: "/rooms/A-15.png",
         imgPlan: "/locations/A-15.png",
+        type: roomsx.p4.idx,
     },
     {
         id: "B-01",
@@ -386,6 +400,7 @@ export const areas = [
         totals: "58.3",
         imgRoom: "/rooms/B-01.png",
         imgPlan: "/locations/B-01.png",
+        type: roomsx.p2.idx,
     },
     {
         id: "B-02",
@@ -405,6 +420,7 @@ export const areas = [
         totals: "59.2",
         imgRoom: "/rooms/B-02.png",
         imgPlan: "/locations/B-02.png",
+        type: roomsx.p2.idx,
     },
     {
         id: "B-03",
@@ -422,6 +438,7 @@ export const areas = [
         totals: "46.2",
         imgRoom: "/rooms/B-03.png",
         imgPlan: "/locations/B-03.png",
+        type: roomsx.p1.idx,
     },
     {
         id: "B-04",
@@ -439,6 +456,7 @@ export const areas = [
         totals: "59.3",
         imgRoom: "/rooms/B-04.png",
         imgPlan: "/locations/B-04.png",
+        type: roomsx.p2.idx,
     },
     {
         id: "B-05",
@@ -456,6 +474,7 @@ export const areas = [
         totals: "62.5",
         imgRoom: "/rooms/B-05.png",
         imgPlan: "/locations/B-05.png",
+        type: roomsx.p2.idx,
     },
     {
         id: "B-06",
@@ -475,6 +494,7 @@ export const areas = [
         totals: "53.9",
         imgRoom: "/rooms/B-06.png",
         imgPlan: "/locations/B-06.png",
+        type: roomsx.p2.idx,
     },
     {
         id: "B-07",
@@ -492,6 +512,7 @@ export const areas = [
         totals: "53.9",
         imgRoom: "/rooms/B-07.png",
         imgPlan: "/locations/B-07.png",
+        type: roomsx.p2.idx,
     },
     {
         id: "B-08",
@@ -509,6 +530,7 @@ export const areas = [
         totals: "42.2",
         imgRoom: "/rooms/B-08.png",
         imgPlan: "/locations/B-08.png",
+        type: roomsx.p1.idx,
     },
     {
         id: "B-09",
@@ -528,6 +550,7 @@ export const areas = [
         totals: "53.6",
         imgRoom: "/rooms/B-09.png",
         imgPlan: "/locations/B-09.png",
+        type: roomsx.p2.idx,
     },
     {
         id: "B-10",
@@ -545,6 +568,7 @@ export const areas = [
         totals: "62.5",
         imgRoom: "/rooms/B-10.png",
         imgPlan: "/locations/B-10.png",
+        type: roomsx.p2.idx,
     },
     {
         id: "B-11",
@@ -564,6 +588,7 @@ export const areas = [
         totals: "62.3",
         imgRoom: "/rooms/B-11.png",
         imgPlan: "/locations/B-11.png",
+        type: roomsx.p2.idx,
     },
     {
         id: "B-11A",
@@ -580,6 +605,7 @@ export const areas = [
         totals: "29.3",
         imgRoom: "/rooms/B-11A.png",
         imgPlan: "/locations/B-11A.png",
+        type: roomsx.p1.idx,
     },
     {
         id: "B-12",
@@ -596,6 +622,7 @@ export const areas = [
         totals: "44.8",
         imgRoom: "/rooms/B-12.png",
         imgPlan: "/locations/B-12.png",
+        type: roomsx.p1.idx,
     },
     {
         id: "B-15",
@@ -612,6 +639,7 @@ export const areas = [
         totals: "44.3",
         imgRoom: "/rooms/B-15.png",
         imgPlan: "/locations/B-15.png",
+        type: roomsx.p1.idx,
     },
 ];
 

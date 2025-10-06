@@ -9,9 +9,12 @@ import { NewsModal } from "./news-modal";
 import { NewsCard } from "../../../components/organims/new-card";
 import { usePosts } from "../../../hooks/use-posts";
 import { linkApi } from "../../../constants";
+import { useIsMobile } from "../../../hooks/use-is-mobile";
 
 export function NewsSwiper() {
     const { posts } = usePosts(linkApi);
+
+    const isMobile = useIsMobile(768);
     const [selectedLink, setSelectedLink] = useState(null);
 
     return (
@@ -22,7 +25,7 @@ export function NewsSwiper() {
                     pagination={{ clickable: true }}
                     grid={{ rows: 1, fill: "row" }}
                     spaceBetween={10}
-                    slidesPerView={3}
+                    slidesPerView={isMobile ? 1 : 3}
                     speed={600}
                 >
                     {posts.map((post) => (

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ChevronDown, ChevronUp, Component, Map } from 'lucide-react';
+import { ChevronDown, ChevronUp, LayoutDashboard, LayoutGrid } from 'lucide-react';
 import ImageGridCarousel from './components/image-grid-carousel';
 import { ListApartment } from './components/list-apartment';
 import { IconButtonVtl } from '../components/molecules/icon-button-vtl';
@@ -9,8 +9,8 @@ export function Room() {
     const [index, setIndex] = useState(0);
 
     const buttonList = [
-        { idx: 0, name: "theo Layout", icon: Component },
-        { idx: 1, name: "Tất cả", icon: Component },
+        { idx: 0, name: "theo Layout", icon: LayoutDashboard },
+        { idx: 1, name: "Tất cả", icon: LayoutGrid },
     ];
 
 
@@ -20,7 +20,7 @@ export function Room() {
 
                 {index === 0 && <ListApartment />}
                 {index === 1 && <ImageGridCarousel />}
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 z-10">
+                <div className="absolute bottom-2 md:bottom-0 left-1/2 -translate-x-1/2 z-10">
                     <div className='w-full flex justify-center'>
                         <button
                             onClick={() => setOpen(!open)}

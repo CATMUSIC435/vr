@@ -3,7 +3,7 @@ import { steps } from "../constants/step";
 export function UsageGuide() {
 
   return (
-    <section className="max-w-3xl  text-white mx-auto p-6 space-y-8 overflow-y-scroll">
+    <section className="max-w-3xl  text-white mx-auto p-6 space-y-8">
       <div className="h-full">
         <h2 className="text-lg ctext-2xl font-bold mb-4">
           Hướng dẫn sử dụng

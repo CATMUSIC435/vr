@@ -34,7 +34,7 @@ export function NewsCard({ id, title, excerpt, link, image, date }) {
                     dangerouslySetInnerHTML={{ __html: title }}
                 />
                 <p
-                    className="hidden md:block text-xs line-clamp-3 text-gray-200"
+                    className="text-xs line-clamp-3 text-gray-200"
                     dangerouslySetInnerHTML={{ __html: excerpt }}
                 />
             </div>

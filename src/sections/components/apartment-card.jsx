@@ -1,7 +1,8 @@
-export function ApartmentCard({ idx, name, img }) {
+export function ApartmentCard({ onClick, idx, name, img }) {
     return (
         <div
             key={idx}
+            onClick={onClick}
             className="relative h-full bg-[#f8f9e9] overflow-hidden shadow-lg group transition-all duration-500"
         >
 
