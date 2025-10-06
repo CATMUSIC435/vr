@@ -1,10 +1,10 @@
 import { Swiper, SwiperSlide } from "swiper/react"
 import { EffectCoverflow, Pagination } from "swiper/modules"
 
-// Import style
 import "swiper/css"
 import "swiper/css/effect-coverflow"
 import "swiper/css/pagination"
+import { services } from "../../constants/service"
 
 export function Swiper3D() {
     return (
@@ -18,7 +18,7 @@ export function Swiper3D() {
                 coverflowEffect={{
                     rotate: 30,
                     stretch: 0,
-                    depth: 250, // độ sâu (tăng giá trị này để thấy rõ hiệu ứng 3D)
+                    depth: 250,
                     modifier: 1,
                     slideShadows: true,
                 }}
@@ -26,15 +26,7 @@ export function Swiper3D() {
                 modules={[EffectCoverflow, Pagination]}
                 className="mySwiper"
             >
-                {[
-                    // "/at-t1.jpg",
-                    // "/at-t2.jpg",
-                    "/at-t3.jpg",
-                    "/at-t3.jpg",
-                    "/at-t3.jpg",
-                    "/at-t3.jpg",
-                    "/at-t3.jpg",
-                ].map((img, index) => (
+                {services.map((img, index) => (
                     <SwiperSlide
                         key={index}
                         className="w-[300px] h-[200px] rounded-2xl overflow-hidden shadow-lg"
@@ -48,7 +40,6 @@ export function Swiper3D() {
                 ))}
             </Swiper>
 
-            {/* CSS inline để đảm bảo Swiper có perspective */}
             <style>{`
         .swiper {
           perspective: 1000px; /* tạo chiều sâu 3D */

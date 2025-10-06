@@ -63,10 +63,10 @@ export function HotspotImage({ position, label, image }) {
                 >
                     <planeGeometry args={[100, 80]} />
                     <meshBasicMaterial
-                        color="#ffae42" // cam nhạt
+                        color="#ffae42"
                         transparent
                         opacity={0.2}
-                        blending={THREE.AdditiveBlending} // ánh sáng thật
+                        blending={THREE.AdditiveBlending}
                         side={THREE.DoubleSide}
                     />
                 </mesh>

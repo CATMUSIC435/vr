@@ -7,6 +7,7 @@ import { Moon, Sun } from 'lucide-react';
 import { HotspotImage } from './components/panorama-component/hotspot-image';
 import { useModal } from '../contexts/modal-context';
 import ListHotspot from './components/panorama-component/listHotpot';
+import { TransitionSlider } from './components/transition-slider';
 
 export default function PanoramaViewer() {
 
@@ -58,8 +59,6 @@ export default function PanoramaViewer() {
                             image="/12.jpg"
                         />
 
-                        {/* {!isOpen ? <HotspotCircle /> : null} */}
-
                         {!isOpen ? <ListHotspot /> : null}
                         <Scene />
 
@@ -67,36 +66,14 @@ export default function PanoramaViewer() {
                     </Canvas>
                 </div>
 
-                <div className='absolute bottom-8 left-1/2 transform -translate-x-1/2 w-80 p-4 rounded-lg text-white'>
-                    <label className='w-full relative" block text-sm font-medium mb-2'>
-                        <div
-                            className="absolute -top-10 flex items-center justify-center w-10 h-10"
-                            style={{
-                                left: `${transition * 100}%`,
-                                transform: "translateX(-50%)",
-                            }}
-                        >
-                            <Moon
-                                className="w-8 h-8 absolute text-gray-400/90"
-                                style={{ opacity: 1 - transition }}
-                            />
-                            <Sun
-                                className="w-8 h-8 absolute text-yellow-400/90"
-                                style={{ opacity: transition }}
-                            />
-                        </div>
-
-                    </label>
-                    <input
-                        type="range"
-                        min="0"
-                        max="1"
-                        step="0.001"
-                        value={transition}
-                        onChange={handleTransition}
-                        className='w-full h-2 appearance-none cursor-pointer bg-white/80 rounded-md slider'
-                    />
-                </div>
+                <TransitionSlider
+                    value={transition}
+                    onChange={handleTransition}
+                    iconStart={<Moon className="w-10 h-10 text-gray-400/90" />}
+                    iconEnd={<Sun className="w-10 h-10 text-yellow-400/90" />}
+                    width="20rem"
+                    color="bg-white/70"
+                />
             </div>
         </>
     )

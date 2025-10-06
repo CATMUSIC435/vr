@@ -1,6 +1,7 @@
 import { Html } from "@react-three/drei";
 import * as THREE from "three";
 import { useMemo } from "react";
+import { motion } from "framer-motion";
 
 export function Hotspot({ position, label, image, top, heightImg }) {
     const start = new THREE.Vector3(...position);
@@ -38,10 +39,16 @@ export function Hotspot({ position, label, image, top, heightImg }) {
             </mesh>
 
             <Html position={[end.x, end.y + 0.5, end.z]} distanceFactor={400}>
-                <div className="relative">
+                <div className="relative pointer-events-none">
                     <div className="relative p-2 z-1">
-                        <div className="absolute text-left mb-1" style={{ top: `-${top + heightImg + 8}px` }}>
-                            <p className="text-xs text-white mb-1 line-clamp-1">{label}</p>
+                        <div className="absolute text-left mb-1" style={{ top: `-${top + heightImg + 8}px` }}><motion.p
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.4, ease: "easeOut" }}
+                            className="text-sm font-semibold text-black px-3 py-1 rounded-sm bg-white/40 backdrop-blur-md shadow-lg text-center line-clamp-1"
+                        >
+                            {label}
+                        </motion.p>
 
                             <div style={{ height: `${heightImg}px`, width: `${heightImg * 3 / 2}px` }}>
                                 <img
@@ -54,13 +61,12 @@ export function Hotspot({ position, label, image, top, heightImg }) {
 
                             </div>
                         </div>
-                        <div style={{width: `${heightImg * 3 / 2}px`}}>
+                        <div style={{ width: `${heightImg * 3 / 2}px` }}>
                             <div className="text-xs w-4 h-4 rounded-full mt-1 bg-white relative mx-auto">
                                 <div className="w-full h-full bg-white animate-ping rounded-lg" />
                             </div>
                         </div>
                     </div>
-                    {/* Hiệu ứng ping glow */}
                 </div>
             </Html>
         </>

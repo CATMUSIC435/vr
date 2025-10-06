@@ -75,7 +75,7 @@ export function Library() {
         ),
         4: (
             <div className="w-full h-full relative">
-                <div className="absolute top-0 left-0 w-full h-full">
+                <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center">
                     <Swiper3D />
                 </div>
             </div>
