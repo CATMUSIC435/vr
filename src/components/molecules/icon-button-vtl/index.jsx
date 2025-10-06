@@ -9,9 +9,6 @@ export function IconButtonVtl({
     active = false,
 }) {
     const { playSound } = useSound(linkSound);
-    console.log(active);
-    
-
     const handleClick = () => {
         playSound();
         onClick();

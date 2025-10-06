@@ -2,9 +2,6 @@ import { pots } from "../../../constants/pot";
 import { Hotspot } from "./hotspot";
 
 export default function ListHotspot() {
-    console.log(pots);
-
-
     return (
         <>
             {

@@ -35,9 +35,6 @@ export const roomsxArray = Object.entries(roomsx).map(([key, value]) => ({
     ...value
 }));
 
-console.log(roomsxArray);
-
-
 export const zonePositions = [
     { id: "zone1", area: 1, plan: "/fills/level-5-20-22-37-01.png", name: "Tầng 5 - 20", top: 60, left: 55 },
     { id: "zone2", area: 1, plan: "/fills/level-5-20-22-37-01.png", name: "Tầng 22 - 38", top: 40, left: 55 },

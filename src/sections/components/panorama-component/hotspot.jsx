@@ -3,9 +3,6 @@ import * as THREE from "three";
 import { useMemo } from "react";
 
 export function Hotspot({ position, label, image, top, heightImg }) {
-    console.log(position, label, image, top);
-
-
     const start = new THREE.Vector3(...position);
     const end = new THREE.Vector3(position[0], position[1] + 100, position[2]);
 
