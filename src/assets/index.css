@@ -37,3 +37,15 @@ body {
 .swiper-button-prev {
   color: white !important;
 }
+
+.mapx select option {
+  background-color: rgba(255, 255, 255, 0.95);
+  color: #1a1a1a;
+  font-weight: 500;
+  border-radius: 6px;
+  padding: 4px 8px;
+}
+
+.mapx select option:hover {
+  background-color: #f5e1b9;
+}
