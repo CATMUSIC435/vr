@@ -16,10 +16,10 @@ export function ListApartment() {
 
     return (
         <div className="w-full h-full">
-            <div className="grid grid-cols-2 md:grid-cols-4 h-full">
+            <div className="flex flex-col md:grid md:grid-cols-4 h-full">
                 <div className="relative w-full h-full">
-                    <div className="absolute top-0 left-0 w-full h-full">
-                        <div className="h-full flex flex-col gap-2">
+                    <div className="md:absolute top-0 left-0 w-full h-full">
+                        <div className="h-full grid grid-cols-2 md:flex md:flex-col gap-2">
                             {
                                 roomsxArray.map((apt, i) => (
                                     <ApartmentCard onClick={() => changeListArea(apt.idx)} key={apt.idx} img={apt.img} name={apt.name} />

@@ -30,7 +30,7 @@ export default function ImageGridCarousel() {
                 <Swiper
                     modules={[Grid, Pagination, Navigation]}
                     pagination={{ clickable: true }}
-                    grid={{ rows: isMobile ? 2 : 3, fill: "row" }}
+                    grid={{ rows: 3, fill: "row" }}
                     spaceBetween={10}
                     slidesPerView={isMobile ? 2 : 4}
                     speed={600}

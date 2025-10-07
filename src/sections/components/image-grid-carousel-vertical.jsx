@@ -10,7 +10,7 @@ import "swiper/css/pagination";
 import { FloorPlanDetail } from "./ploor-component/floor-plan-detail";
 import { useIsMobile } from "../../hooks/use-is-mobile";
 
-export function ImageGridCarouselVertical({areas}) {
+export function ImageGridCarouselVertical({ areas }) {
     const [modalArea, setModalArea] = useState(false);
     const isMobile = useIsMobile(768)
     const [area, setArea] = useState(null);
@@ -26,8 +26,8 @@ export function ImageGridCarouselVertical({areas}) {
                 <Swiper
                     modules={[Grid, Navigation, Pagination]}
                     spaceBetween={10}
-                    grid={{ rows: 3, fill: "row" }}
-                    slidesPerView={isMobile ? 1 : 3}
+                    grid={{ rows: isMobile ? 2 : 3, fill: "row" }}
+                    slidesPerView={isMobile ? 2 : 3}
                     mousewheel={true}
                     navigation
                     pagination={{ clickable: true }}
@@ -57,7 +57,7 @@ export function ImageGridCarouselVertical({areas}) {
                 </Swiper>
             </div>
 
-         <AnimatePresence>
+            <AnimatePresence>
                 {modalArea && (
                     <motion.div
                         className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 rounded-2xl  md:overflow-hidden"
